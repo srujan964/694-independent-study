@@ -21,9 +21,7 @@
 			- the code should achieve as much compression as possible
 		- Such a code is a prefix code if no codeword is a prefix of another codeword.
 		- Expected Length $$L(C, X)$$ of a symbol code $$C$$ for $$X$$ is given by:
-			- $$
-			  L(C, X) = \sum_{x \in X} P(x)l(x)
-			  $$
+			- $$L(C, X) = \sum_{x \in X} P(x)l(x)$$
 			  where the length of each codeword is given by $$l(x)$$
 	- Gibb's inequality:
 	- ## Prefix Codes
