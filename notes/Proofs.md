@@ -11,4 +11,4 @@
 - # Lempel Ziv
 	- Let the number of phrases stored in the dictionary during LZ encoding is of a sequence of length $$n$$ be $$r$$.
 	- The encoded string consists of $$r$$ pairs of pointers to the an occurrence of a prefix of the current phrase, and a new bit that is the tail of the phase itself.
-	- Each pointer can be represented by $$\lceil log_2(r) \rceil$$ bits. Hence, we can represented the resulting binary code with $$ r*(log_2(r) + 1) $$ bits.
+	- Each pointer can be represented by $$\lceil log_2(r) \rceil$$ bits. Hence, we can represented the resulting binary code with $$r*(log_2(r) + 1)$$ bits.
