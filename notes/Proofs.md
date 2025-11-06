@@ -1,4 +1,4 @@
-# Huffman Code
+- # Huffman Code
 	- There are a few properties of an optimal Huffman code:
 		- given two symbols a and b in the original source, if $$p(a) \gt p(b)$$, then $$l_a \le l_b$$.
 		- the two least probably symbols have the same codelength (as they are siblings), and they only differ by 1 bit.
