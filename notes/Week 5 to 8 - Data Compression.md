@@ -34,5 +34,5 @@
 	  }
 	  ```
 	- The cumulative probabilities $$Q_n$$ and $$R_n$$ are given by:
-		- $$Q_n(a_i | x_1, ... ,x_{n-1}) = \sum_{i^` = 1}^{i - 1} P(x_n = a_{i^`} | x_1, ..., x_{n-1})$$
-		- $$R_n(a_i | x_1, ..., x_{n-1}) = \sum_{i^` = 1}^{i} P(x_n = a_{i^`} | x_1, ..., x_{n-1})$$
+		- $$Q_n(a_i | x_1, ... ,x_{n-1}) = \sum_{i^{\prime} = 1}^{i - 1} P(x_n = a_{i^{\prime}} | x_1, ..., x_{n-1})$$
+		- $$R_n(a_i | x_1, ..., x_{n-1}) = \sum_{i^{\prime} = 1}^{i} P(x_n = a_{i^{\prime}} | x_1, ..., x_{n-1})$$
