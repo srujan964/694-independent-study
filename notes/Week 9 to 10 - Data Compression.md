@@ -1,4 +1,4 @@
-## Dynamic/Adaptive Huffman Coding
+- ## Dynamic/Adaptive Huffman Coding
 	- Motivation:
 		- Huffman's algorithm requires two passes over the input sequence: once to calculate the frequencies (i.e probabilities) of each symbol in the sequence, and the second to build the Huffman tree using the probability distribution from the first pass.
 	- Dynamic huffman coding instead uses a one pass encoding technique and hence runs faster.
@@ -11,4 +11,3 @@
 		- the $p$ leaves have non-negative weights $$w_1, w_2, ... w_p$$ and the weight of each interior node is the sum of the weights of its children
 		- the nodes can be numbered in a nondecreasing order by weight, so that nodes $$2j-1$$ and $$2j$$ are siblings, for $$1 \le j \le p-1$$ and their common parent is higher in the number.
 	- The node numbering corresponds to the order in which the nodes are combined by Huffman's algorithm.
-	-
