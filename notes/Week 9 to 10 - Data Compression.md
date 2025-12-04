@@ -1,0 +1,14 @@
+## Dynamic/Adaptive Huffman Coding
+	- Motivation:
+		- Huffman's algorithm requires two passes over the input sequence: once to calculate the frequencies (i.e probabilities) of each symbol in the sequence, and the second to build the Huffman tree using the probability distribution from the first pass.
+	- Dynamic huffman coding instead uses a one pass encoding technique and hence runs faster.
+	- Both the sender and receiver have the same initial state for the same sequence and hence are in sync, so the sender does not need to provide the tree to the receiver for the latter to be able to decode the encoded sequence, unlike the two pass method.
+	- There exist two algorithms for dynamic huffman coding; FGK (Faller-Gallager-Knuth), and Vitter's algorithms. While they do have their differences (Vitters being the more optimal one with the downside of being slower), they share the same basic idea.
+	- They do not use a static code based on a single binary tree, since they cannot make an initial pass to calculate the letter frequencies that would be required to build the Huffman tree.
+	- Instead the coding is based on a dynamically varying Huffman tree, i.e, the tree used to process the (t + 1) letter in the Huffman tree with respect $$M_t$$.
+	- The sender encodes the (t+1)st letter $$a_{i_{t}}$$ in the message by the sequences of 0s and 1s that specifies the path from the root to $$a_{i_{t}}$$'s leaf. The receiver then recovers the original letter by the corresponding traversal of its copy of the tree. Both sender and receiver then modify their copy of the tree at this point before proceeding to the next letter, after which it results in the Huffman tree for message $$M_t$$.
+	- Such a Huffman tree of $p$ leaves needs to fulfil an import property, known as the Sibling property:
+		- the $p$ leaves have non-negative weights $$w_1, w_2, ... w_p$$ and the weight of each interior node is the sum of the weights of its children
+		- the nodes can be numbered in a nondecreasing order by weight, so that nodes $$2j-1$$ and $$2j$$ are siblings, for $$1 \le j \le p-1$$ and their common parent is higher in the number.
+	- The node numbering corresponds to the order in which the nodes are combined by Huffman's algorithm.
+	-
