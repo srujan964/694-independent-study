@@ -22,3 +22,6 @@
 	- The following figure (Fig 1) shows an example of the swap-and-increment operation.
 		- ![dynamic-huffman-fig-1.png](./assets/dynamic-huffman-fig-1.png)
 	- A special pseudo-node, known as the 0-node or the NYT (not-yet-transferred) node is used to represent any unseen symbols in the tree, to ensure that each node has a sibling during insertion. When the (t+1)st node in the message is processed, if it does not already appear in $$M_{t+1}$$, the 0-node is split to create a leaf node for it, with its sibling becoming the 0-node.
+- ### References
+	- Design and Analysis of Dynamic Huffman Codes - J.S Vitter, Journal of the ACM, 34(4), 1987.
+	  logseq.order-list-type:: number
