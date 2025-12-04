@@ -7,7 +7,18 @@
 	- They do not use a static code based on a single binary tree, since they cannot make an initial pass to calculate the letter frequencies that would be required to build the Huffman tree.
 	- Instead the coding is based on a dynamically varying Huffman tree, i.e, the tree used to process the (t + 1) letter in the Huffman tree with respect $$M_t$$.
 	- The sender encodes the (t+1)st letter $$a_{i_{t}}$$ in the message by the sequences of 0s and 1s that specifies the path from the root to $$a_{i_{t}}$$'s leaf. The receiver then recovers the original letter by the corresponding traversal of its copy of the tree. Both sender and receiver then modify their copy of the tree at this point before proceeding to the next letter, after which it results in the Huffman tree for message $$M_t$$.
-	- Such a Huffman tree of $p$ leaves needs to fulfil an import property, known as the Sibling property:
+	- Such a Huffman tree of $p$ leaves needs to fulfil an import property, known as the **Sibling property** or the **Sibling rule**:
 		- the $p$ leaves have non-negative weights $$w_1, w_2, ... w_p$$ and the weight of each interior node is the sum of the weights of its children
 		- the nodes can be numbered in a nondecreasing order by weight, so that nodes $$2j-1$$ and $$2j$$ are siblings, for $$1 \le j \le p-1$$ and their common parent is higher in the number.
 	- The node numbering corresponds to the order in which the nodes are combined by Huffman's algorithm.
+	- Suppose that $$M_t = a_1, a_2, ...a_{i_t}$$ has already been processed. The next letter $$a_{i_{t+1}}$$ is encoded and decoding using a Huffman tree for $$M_{t+1}$$. We need to find a way to modify this tree quickly in order to produce a Huffman tree for $$M_{t+1}$$ for the next symbol to encode.
+	- Consider an alphabet size $$t = 32$$, and an incoming symbol $$a_{i_{t+1}} = "b"$$. If we just simply increment the weight of the leaf node containing the symbol b and that of its ancestors, the tree would no longer satisfy the Sibling property and hence not be a Huffman tree, as node 4 would be updated to have weight 6 and the node immediately to its right i.e node 5 still a weight of 5. (Fig 1.a)
+	- Vitter proposes a two phase solution to perform this update. It is two phase only for simplicity, it can be implemented as a single phase operation.
+	- In phase 1, we intend to rearrange the nodes such that the weight of $$a_{i_{t+1}}$$ can be updated while still preserving the Sibling rule. We start by marking the leaf node of $$a_{i_{t+1}}$$ as the current node. We swap the contents of current node with the highest numbered node with the same weight, and then mark the parent of the latter as the new current node. This process is repeated until we reach the root node.
+	- In phase 2, we simply increment the weight of the leaf node for $$a_{i_{t+1}}$$ and that of its ancestors.
+	- The reason why the result tree is a Huffman tree for $$M_{t+1}$$ is twofold:
+		- the numbering of the nodes is the same as it was prior to incrementing
+		- incrementing still preserves the first condition of the Sibling rule. As we swap the current node with the highest numbered node of the same weight, we ensure that there exists no node to its right with equal weight. This lets us freely increment the weight of the current node and still satisfy the second condition of the Sibling rule.
+	- The following figure (Fig 1) shows an example of the swap-and-increment operation.
+		- ![dynamic-huffman-fig-1.png](./assets/dynamic-huffman-fig-1.png)
+	- A special pseudo-node, known as the 0-node or the NYT (not-yet-transferred) node is used to represent any unseen symbols in the tree, to ensure that each node has a sibling during insertion. When the (t+1)st node in the message is processed, if it does not already appear in $$M_{t+1}$$, the 0-node is split to create a leaf node for it, with its sibling becoming the 0-node.
