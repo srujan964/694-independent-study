@@ -36,3 +36,6 @@
 	- The cumulative probabilities $$Q_n$$ and $$R_n$$ are given by:
 		- $$Q_n(a_i | x_1, ... ,x_{n-1}) = \sum_{i^{\prime} = 1}^{i - 1} P(x_n = a_{i^{\prime}} | x_1, ..., x_{n-1})$$
 		- $$R_n(a_i | x_1, ..., x_{n-1}) = \sum_{i^{\prime} = 1}^{i} P(x_n = a_{i^{\prime}} | x_1, ..., x_{n-1})$$
+- ### References
+	- Thomas M. Cover, Joy A. Thomas, 1991, *Elements of Information Theory*.
+	- David J.C. MacKay, 2003, *Information Theory, Inference, and Learning Algorithms*.

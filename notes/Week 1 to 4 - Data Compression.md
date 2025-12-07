@@ -43,10 +43,12 @@
 		- Is it very practical? Not for a couple of reasons:
 			- It requires knowing the frequencies of each symbol in the given source beforehand. Compressing a source would then require two passes, one to calculate frequencies, and the second to actually build the Huffman tree and arrive at the codewords.
 			- Depending on the context, it can end up using more bits than is efficient for each symbol. Certain strings are more probably in the English source but the Huffman code would still result with atleast one bit per symbol, while a more efficient encoding technique would be able to encode the entire string in fewer bits.
+	-
 	- ## Arithmetic Coding
 		- Using an interval $$[0,1)$$, an arithmetic coding encoder divides this interval into sub-intervals, for each symbol that it reads from the string to be encoded, proportional to the probability of that symbol occurring next in the string. Any fractional value in the final interval can be chosen to represent the encoded message.
 		- Unlike Huffman codes which map each symbol to a codeword, arithmetic codes encode the entire string as a binary fraction.
 		- The binary fraction is a pointer to a sub-interval that results from narrowing the range $$[0,1)$$ by using the probabilities of each possible symbol in the string.
+	-
 - # Lempel-Ziv
 	- The basic principle behind Lempel-Ziv is to replace a substring occurring in the given string to encode by a pointer to an earlier occurrence of that substring.
 	- This requires the encoder to first parse the string into unique substrings that is the shortest and not seen earlier.
@@ -54,3 +56,5 @@
 	- ### Caveats
 		- However, this method can end up transmitting more bits than is necessary. We know that each pointer reference can be followed by only two possible values (a 0 and a 1). Once we have one occurrence of a pointer reference with a new bit, we know for sure what the next occurrence of that pointer reference will be followed by.
 		- Additionally, once both possible variations have occurred, the pointer reference itself will never be used again, so this particular codeword can be dropped from the dictionary entirely.
+- ### References
+	- David J.C. MacKay, 2003, *Information Theory, Inference, and Learning Algorithms*.

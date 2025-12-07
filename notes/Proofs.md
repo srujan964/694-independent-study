@@ -94,5 +94,6 @@
 	- From the above bound, and from $$nH \approx -log_2 P(x)$$, LZ compresses a sequence to $$nH + o(n)$$, asympotatically achieving the Shannon bound.
 -
 - References:
-	- Elements of Information Theory - Thomas M. Cover, Joy A. Thomas, 1991
-	- Information Theory, Inference, and Learning Algorithms - David J.C. MacKay
+	- Thomas M. Cover, Joy A. Thomas, 1991, *Elements of Information Theory*.
+	- David J.C. MacKay, 2003, *Information Theory, Inference, and Learning Algorithms*.
+	- Michel Goemens, 2015, *Lempel-Ziv Notes*, https://math.mit.edu/~goemans/18310S15/lempel-ziv-notes.pdf

@@ -22,6 +22,26 @@
 	- The following figure (Fig 1) shows an example of the swap-and-increment operation.
 		- ![dynamic-huffman-fig-1.png](./assets/dynamic-huffman-fig-1.png)
 	- A special pseudo-node, known as the 0-node or the NYT (not-yet-transferred) node is used to represent any unseen symbols in the tree, to ensure that each node has a sibling during insertion. When the (t+1)st node in the message is processed, if it does not already appear in $$M_{t+1}$$, the 0-node is split to create a leaf node for it, with its sibling becoming the 0-node.
+- ## DEFLATE algorithm
+	- Uses a combination of LZ77 and Huffman codes
+	- #### Compressed Data format
+		- The compressed data is broken up into blocks, each block containing a huffman tree and a portion of compressed data. The Huffman tree in each block is independent of those from other blocks, however the LZ77 compressed data can reference strings from a previous block upto 32K input bytes.
+		- The LZ77 compressed data contains literal byte strings (i.e input data sequences that have not been seen before in the previous 32K bytes), and pointers to duplicated strings, represented by <length, backwards distance>. The distance is limited to 32K bytes and the length is limited to 258 bits.
+		- The block size is not limited except in the case of data that is non-compressible, which has a limit of 65,535 bytes.
+	- Deflate allows for multiple compression levels, according to the BFINAL header bit:
+		- 00 - No compression
+		- 01 - compressed with fixed Huffman codes
+		- 10 - compressed with dynamic Huffman codes
+	- Some additional rules for Huffman codes are:
+		- Huffman codes of a given bit length are lexicographically consecutive, in the same order as the symbols they represent. Eg. 100 , 101, and 110 are lexicographically consecutive
+		- Shorter codes lexicographically precede longer ones. Eg: 0 precedes 10 which precedes 110.
+	- The encoded data blocks consist of sequences of symbols from 3 different alphabets defined for Deflate:
+		- literal bytes, in the case of uncompressed data, or data that has not been seen before in the previous 32K bytes
+		- from the alphabet of byte values (0..255)
+		- or <length, backwards distance> pairs where the length is from the alphabet (3..258) and the distance is from (1..32,768).
+	- The literal and length alphabets are merged into a single alphabet (0..258), where values from 0..255 represent the literal values, value 256 indicates an end-of-block, and values from 257-258 represent length codes (with some extra bits)
+	-
 - ### References
-	- Design and Analysis of Dynamic Huffman Codes - J.S Vitter, Journal of the ACM, 34(4), 1987.
-	  logseq.order-list-type:: number
+	- J.S Vitter. (1987). Design and Analysis of Dynamic Huffman Codes.  *Journal of the ACM, 34(4)*.
+	  https://doi.org/10.1145/31846.42227
+	- RFC-1951 - DEFLATE Compressed Data Format Specification v1.3. https://www.rfc-editor.org/rfc/rfc1951
