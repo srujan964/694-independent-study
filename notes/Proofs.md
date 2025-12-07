@@ -92,7 +92,6 @@
 	  
 	  where $$L_\phi(x)$$ is the encoding length of $$x$$ using LZ.
 	- From the above bound, and from $$nH \approx -log_2 P(x)$$, LZ compresses a sequence to $$nH + o(n)$$, asympotatically achieving the Shannon bound.
--
 - References:
 	- Thomas M. Cover, Joy A. Thomas, 1991, *Elements of Information Theory*.
 	- David J.C. MacKay, 2003, *Information Theory, Inference, and Learning Algorithms*.
