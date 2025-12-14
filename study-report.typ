@@ -4,7 +4,7 @@
   title: "Independent Study Report
   Data Compression",
   author: "Srujan Gangoor",
-  date: none
+  date: none,
 )
 
 #set page(
@@ -17,37 +17,40 @@
 
 #set text(
   font: "New Computer Modern",
-  size: 10pt
+  size: 10pt,
 )
 
 #set par(
   leading: double-spacing,
-  spacing: double-spacing
+  spacing: double-spacing,
 )
 
 #set math.equation(numbering: "1")
 
 #set bibliography(
-  style: "apa"
+  style: "apa",
 )
+
+#for i in range(6) {
+  [~] + parbreak()
+}
+
 
 #show title: set text(size: 14pt)
 #show title: set align(center)
 #show title: set block(below: 1.5em)
 
-#align(alignment.horizon)[
-  #title[Data Compression]
-  #parbreak()
+#title[Data Compression]
+#parbreak()
 
-  #align(center)[
-    Srujan Gangoor
+#align(center)[
+  Srujan Gangoor
 
-    Dept. of Computer Science, Rutgers University - Camden
+  Dept. of Computer Science, Rutgers University - Camden
 
-    198:694 Independent Study
+  198:694 Independent Study
 
-    Dr. Sunil Shende
+  Dr. Sunil Shende
 
-    December 19, 2025
-  ]
+  December 19, 2025
 ]
