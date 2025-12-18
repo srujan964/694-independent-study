@@ -147,4 +147,81 @@ that information will be lost if they are compressed to fewer that $N H$ bits @D
 
 #pagebreak()
 
+= Variable Length Codes
+
+Variable length symbol codes are those that are mapped to one symbol at a time,
+unlike $N$-length strings. These are always lossless but also means that sometimes,
+the encode to slightly longer strings than the source. The key is to optimally
+assign shorter codes to more probable strings and longer ones to the more probable
+ones.
+
+A binary symbol code @DavidMacKayInfoTheory[p. 92] for $X$ maps for all elements
+of $A_X$ to codes in the range ${0, 1}^+$. The codeword for any given symbol $x$
+is given by $c(x)$ and $l(x)$ denotes the length of the corresponding codeword.
+The extended code, given by $C^+$, is a mapping from $A^+$ to ${0, 1}^+$, obtained
+by concatenation and without punctation, of the corresponding codewords:
+$ c^+ (x_1 x_2 ... x_N) = c(x_1) c(x_2) ... c(x_N) $
+
+Such a code is uniquely decodeable, if under the extended code $C(X)^+$, no two
+distinct strings in $A+$ have the same codeword. Furthermore, a *prefix code* is one
+if no codeword is a prefix of another codeword. Prefix codes are ideal because they
+remove the ambiguity during decoding; how would a decoder decide which source string
+a code should be mapped to as it reads the codeword one symbol at a time?
+
+The expected length of a symbol code for an ensemble $X$ is given by @DavidMacKayInfoTheory[p. 93],
+$ L(C, X) = sum(x in X) P(x) l(x) $
+
+== Huffman Codes
+
+The goal is to minimize the expected length $L(C, X)$ of a symbol code. As it turns out,
+this is lower bounded by the entropy $H(X)$, i.e, we can't hope to compress a
+symbol code to lower than its entropy.
+
+Huffman coding aims to produce such an optimal prefix code, and it does so by a
+greedy approach and by building the binary tree in reverse, with the leaf elements first. @DavidMacKayInfoTheory[p. 99]
+
+1. Take the two least probably elements from the alphabet. These two will be given
+the longest codewords, of equal length and they will only differ in the last digit.
+2. Combine them into a single symbol and repeat.
+
+#pagebreak()
+
+#figure(
+  image("assets/huffman-1.png", height: 40%),
+  caption: "A huffman tree representation of Bookkeeper",
+)
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    stroke: (x: none, y: none),
+    align: horizon,
+    table.hline(),
+    table.header($a_i$, $p_i$, $h(p_i)$, $l_i$, $c(a_i)$),
+    table.hline(),
+    [B], [0.1], [3.32], [3], [001],
+    [o], [0.2], [2.32], [2], [10],
+    [k], [0.2], [2.32], [2], [11],
+    [e], [0.3], [1.73], [2], [01],
+    [p], [0.1], [3.32], [4], [0000],
+    [r], [0.1], [3.32], [4], [0001],
+    table.hline(),
+  ),
+  caption: [Code created by the Huffman algorithm],
+)
+
+There are some caveats with Huffman codes. Firstly, it requires two passes through
+the source string: the first to calculate frequencies of each source symbol, and
+the second to build the Huffman tree and arrive at the codewords. Secondly, depending
+on the context, it can end up using more bits than is efficient for each symbol.
+Symbol frequencies can vary and Huffman coding does not handle a shifting distribution well.
+
+#pagebreak()
+
+== Dynamic Huffman Codes
+
+
+#pagebreak()
+
+
 #bibliography("references.yml")
