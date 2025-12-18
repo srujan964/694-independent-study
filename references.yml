@@ -1,0 +1,20 @@
+discord:
+  type: Web
+  title: How Discord Reduced Websocket Traffic by 40%
+  author: Austin Whyte
+  url: https://discord.com/blog/how-discord-reduced-websocket-traffic-by-40-percent
+zstd:
+  type: web
+  title: Zstandard - Fast real-time compression algorithm
+  url: https://github.com/facebook/zstd
+lz4:
+  type: web
+  title: LZ4 - Extremely fast compression
+  url: https://github.com/lz4/lz4
+DavidMacKayInfoTheory:
+  type: book
+  title: Information Theory, Inference, and Learning Algorithms
+  author: MacKay, David J.C.
+  date: 2003
+  publisher: Cambridge University Press
+
