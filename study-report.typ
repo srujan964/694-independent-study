@@ -358,7 +358,9 @@ interval for the message before anything is transmitted. Each symbol processed b
 encoder narrows down the interval needed to represent it. However, the interval
 reduces by a smaller degree when it encounters a more probable symbol as compared
 to that of a less probable one. This is how it ensures that the resulting binary
-fraction remains optimal @ArithmeticCoding.
+fraction remains optimal @ArithmeticCoding. However, despite their high optimality,
+arithmetic codes have historically encumbered by patents and is often used in
+image and video compression formats such as JPEG.
 
 == Lempel-Ziv
 
