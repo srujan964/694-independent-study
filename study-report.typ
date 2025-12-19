@@ -172,7 +172,7 @@ $ c^+ (x_1 x_2 ... x_N) = c(x_1) c(x_2) ... c(x_N) $
 
 Such a code is uniquely decodeable, if under the extended code $C(X)^+$, no two
 distinct strings in $A+$ have the same codeword. Furthermore, a *prefix code* is one
-if no codeword is a prefix of another codeword. Prefix codes are ideal because they
+where no codeword is a prefix of another codeword. Prefix codes are ideal because they
 remove the ambiguity during decoding; how would a decoder decide which source string
 a code should be mapped to as it reads the codeword one symbol at a time?
 
