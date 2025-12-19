@@ -450,7 +450,8 @@ The zlib implementation of DEFLATE decides what type of encoding to use for the
 compressed block by comparing the number of bytes occupied by the blocks by each
 method, i.e fixed Huffman and dynamic Huffman, and choosing the more efficient
 method @zlib. It also provides multiple levels of compression which adjusts multiple
-parameters of deflate, including the sliding window size.
+parameters of deflate, including the sliding window size. Higher levels of compression
+improve the compression ratio at the expense of compression speed and memory usage.
 
 #pagebreak()
 
