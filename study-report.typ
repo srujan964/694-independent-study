@@ -438,7 +438,7 @@ implementations, they roughly involve:
 - #text[
     LZ77 compression for the source continuously until the output buffer is full,
     at which point it designates it as the end of the current block, unless the
-    block is designated to contain uncompressed data
+    block is designated to contain uncompressed data,
   ]
 - #text[
     compressing the LZ77 encoded data by Huffman encoding the literals and
