@@ -20,6 +20,6 @@ typst v0.14.2
 ## Usage
 
 ```
-typst compile study-report.tpy
+typst compile study-report.typ
 ```
 
